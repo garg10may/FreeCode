@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 469.7 425.6" enable-background="new 0 0 469.7 425.6" xml:space="preserve">
+<font horiz-adv-x="2048">
+<!-- Helvetica is a registered trademark of Linotype AG -->
+<!-- Copyright: Copyright 2016 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="MyriadPro-Regular" units-per-em="2048" underline-position="-155" underline-thickness="101"/>
+<missing-glyph horiz-adv-x="1298" d="M66,0l0,1469l1166,0l0,-1469M1048,184l0,1101l-798,0l0,-1101z"/>
+<glyph unicode=" " horiz-adv-x="569"/>
+<glyph unicode="(" horiz-adv-x="682" d="M606,1493C501,1290 433,1140 402,1044C355,898 331,729 331,538C331,345 358,168 412,8C445,-91 511,-233 609,-418l-121,0C391,-266 330,-169 307,-127C284,-85 258,-28 231,44C194,143 168,248 153,360C146,418 142,473 142,526C142,723 173,899 235,1053C274,1151 356,1298 481,1493z"/>
+<glyph unicode=")" horiz-adv-x="682" d="M71,-418C177,-211 245,-61 276,34C323,177 346,345 346,538C346,731 319,907 265,1067C232,1166 166,1308 68,1493l121,0C292,1329 354,1228 376,1190C397,1151 421,1098 446,1031C478,948 501,865 515,784C528,703 535,624 535,549C535,352 504,176 441,21C402,-78 320,-225 196,-418z"/>
+<glyph unicode="-" horiz-adv-x="682" d="M85,663l502,0l0,-185l-502,0z"/>
+<glyph unicode="0" horiz-adv-x="1139" d="M956,1203C1020,1085 1052,923 1052,718C1052,523 1023,362 965,235C881,52 744,-39 553,-39C381,-39 253,36 169,185C99,310 64,477 64,687C64,850 85,989 127,1106C206,1323 348,1432 554,1432C739,1432 873,1356 956,1203M858,711C858,874 838,1008 798,1113C758,1218 680,1270 565,1270C459,1270 382,1220 333,1121C284,1021 259,874 259,680C259,534 275,417 306,328C354,193 436,125 552,125C645,125 720,166 775,249C830,332 858,486 858,711z"/>
+<glyph unicode="1" horiz-adv-x="1139" d="M196,1014l0,138C326,1165 417,1186 468,1216C519,1245 558,1315 583,1426l142,0l0,-1426l-192,0l0,1014z"/>
+<glyph unicode="2" horiz-adv-x="1139" d="M400,571l192,111C678,732 738,775 773,810C828,865 855,929 855,1000C855,1083 830,1150 780,1199C730,1248 663,1272 580,1272C457,1272 371,1225 324,1132C299,1082 285,1013 282,924l-183,0C101,1049 124,1150 168,1229C246,1368 384,1437 581,1437C745,1437 865,1393 941,1304C1016,1215 1054,1117 1054,1008C1054,893 1014,795 933,714C886,667 803,609 682,542l-137,-76C480,430 428,396 391,363C324,305 282,241 265,170l782,0l0,-170l-983,0C71,123 96,231 141,322C185,413 271,496 400,571z"/>
+<glyph unicode="3" horiz-adv-x="1139" d="M49,440l188,0C245,347 262,280 289,238C336,163 420,125 542,125C637,125 713,150 770,201C827,252 856,317 856,397C856,496 826,565 766,604C705,643 621,663 514,663C502,663 490,663 478,663C465,662 453,662 440,661l0,159C459,818 474,817 487,816C500,815 513,815 528,815C595,815 651,826 694,847C770,884 808,951 808,1047C808,1118 783,1173 732,1212C681,1251 622,1270 555,1270C435,1270 352,1230 306,1150C281,1106 266,1043 263,962l-178,0C85,1069 106,1159 149,1234C222,1367 351,1434 536,1434C682,1434 795,1402 875,1337C955,1272 995,1177 995,1054C995,966 971,895 924,840C895,806 857,779 810,760C885,739 944,700 987,641C1029,582 1050,509 1050,424C1050,287 1005,176 915,90C825,4 697,-39 532,-39C363,-39 240,8 164,101C87,194 49,307 49,440z"/>
+<glyph unicode="4" horiz-adv-x="1139" d="M677,507l0,649l-459,-649M680,0l0,350l-628,0l0,176l656,910l152,0l0,-929l211,0l0,-157l-211,0l0,-350z"/>
+<glyph unicode="5" horiz-adv-x="1139" d="M253,365C265,262 313,191 396,152C439,132 488,122 544,122C651,122 730,156 781,224C832,292 858,367 858,450C858,550 828,627 767,682C706,737 632,764 547,764C485,764 432,752 388,728C343,704 305,671 274,628l-156,9l109,771l744,0l0,-174l-609,0l-61,-398C334,861 366,880 396,893C449,915 511,926 581,926C712,926 824,884 915,799C1006,714 1052,607 1052,477C1052,342 1010,222 927,119C843,16 709,-36 526,-36C409,-36 306,-3 217,63C127,128 77,229 66,365z"/>
+<glyph unicode="6" horiz-adv-x="1139" d="M1028,1057l-178,0C839,1114 822,1158 799,1190C756,1250 690,1280 602,1280C501,1280 421,1234 362,1141C303,1048 270,914 263,741C304,802 356,847 419,877C476,904 540,917 611,917C731,917 836,879 925,802C1014,725 1059,611 1059,459C1059,329 1017,214 932,114C847,13 727,-37 570,-37C436,-37 320,14 223,116C126,217 77,388 77,629C77,807 99,958 142,1082C225,1319 378,1438 599,1438C759,1438 871,1397 934,1314C997,1231 1028,1145 1028,1057M869,444C869,517 848,587 806,654C764,720 688,753 577,753C500,753 432,727 374,676C315,625 286,547 286,444C286,353 313,277 366,216C419,154 492,123 586,123C681,123 752,155 799,219C846,282 869,357 869,444z"/>
+<glyph unicode="7" horiz-adv-x="1139" d="M1071,1408l0,-157C1025,1206 964,1129 888,1018C811,907 744,788 685,660C627,535 583,422 553,319C534,253 509,147 478,0l-199,0C324,273 424,545 579,816C670,975 766,1112 867,1227l-792,0l0,181z"/>
+<glyph unicode="8" horiz-adv-x="1139" d="M810,1057C810,1110 789,1159 746,1204C703,1249 638,1271 551,1271C464,1271 402,1249 363,1204C324,1159 305,1107 305,1047C305,980 330,927 380,889C430,851 489,832 557,832C636,832 698,854 743,899C788,943 810,996 810,1057M858,392C858,485 830,555 773,603C716,651 644,675 555,675C469,675 399,651 345,602C290,553 263,485 263,398C263,323 288,259 338,205C387,150 464,123 568,123C651,123 721,146 776,191C831,236 858,303 858,392M195,838C142,891 116,961 116,1046C116,1153 155,1244 232,1321C309,1398 419,1436 561,1436C698,1436 806,1400 884,1328C962,1255 1001,1171 1001,1074C1001,985 978,912 933,857C908,826 868,795 815,765C874,738 921,706 955,671C1018,604 1050,518 1050,411C1050,285 1008,178 923,91C838,3 719,-41 564,-41C425,-41 307,-3 211,73C114,148 66,258 66,402C66,487 87,560 128,622C169,683 231,730 312,763C262,784 223,809 195,838z"/>
+<glyph unicode="9" horiz-adv-x="1139" d="M272,346C277,247 316,178 387,140C424,120 465,110 511,110C597,110 670,146 731,218C792,289 835,435 860,654C820,591 771,546 712,521C653,495 589,482 521,482C383,482 274,525 194,611C113,697 73,808 73,943C73,1073 113,1187 192,1286C271,1385 388,1434 543,1434C752,1434 896,1340 975,1152C1019,1049 1041,919 1041,764C1041,589 1015,433 962,298C875,73 727,-40 518,-40C378,-40 272,-3 199,70C126,143 90,235 90,346M829,957C829,1062 803,1141 750,1193C697,1244 629,1270 547,1270C459,1270 389,1241 338,1182C286,1123 260,1044 260,945C260,852 283,778 328,723C373,668 446,640 545,640C616,640 682,664 741,711C800,758 829,840 829,957z"/>
+<glyph unicode="=" horiz-adv-x="1196" d="M1135,822l0,-168l-1043,0l0,168M1135,393l0,-171l-1043,0l0,171z"/>
+<glyph unicode="A" horiz-adv-x="1366" d="M910,602l-223,649l-237,-649M583,1469l225,0l533,-1469l-218,0l-149,440l-581,0l-159,-440l-204,0z"/>
+<glyph unicode="a" horiz-adv-x="1139" d="M462,117C525,117 587,132 646,161C746,210 796,289 796,400l0,145C774,531 746,519 711,510C676,501 642,494 609,490l-109,-14C435,467 386,454 353,435C298,404 270,354 270,285C270,233 289,192 327,162C365,132 410,117 462,117M706,649C747,654 775,672 789,701C797,717 801,740 801,770C801,831 779,876 736,904C692,931 629,945 548,945C454,945 387,920 348,869C326,841 312,799 305,744l-168,0C140,876 183,968 266,1020C348,1071 443,1097 552,1097C678,1097 780,1073 859,1025C937,977 976,902 976,801l0,-617C976,165 980,150 988,139C995,128 1011,122 1036,122C1044,122 1053,123 1063,124C1073,125 1084,126 1095,128l0,-133C1067,-13 1046,-18 1031,-20C1016,-22 996,-23 971,-23C909,-23 864,-1 836,43C821,66 811,99 805,142C768,94 716,52 647,17C578,-18 503,-36 420,-36C321,-36 240,-6 177,55C114,115 82,190 82,281C82,380 113,457 175,512C237,567 318,600 419,613z"/>
+<glyph unicode="c" horiz-adv-x="1024" d="M976,711l-175,0C790,777 766,832 728,876C690,919 629,941 545,941C430,941 348,885 299,773C267,700 251,611 251,504C251,397 274,306 319,233C364,160 436,123 533,123C608,123 667,146 711,192C754,237 784,300 801,379l175,0C956,237 906,133 826,68C746,2 644,-31 519,-31C379,-31 267,20 184,123C101,225 59,353 59,506C59,694 105,840 196,945C287,1050 404,1102 545,1102C666,1102 764,1073 840,1014C915,955 961,854 976,711z"/>
+<glyph unicode="d" horiz-adv-x="1139" d="M553,119C636,119 705,155 759,227C812,298 839,401 839,535C839,670 811,771 756,836C701,901 632,933 551,933C460,933 387,898 331,829C274,760 246,658 246,523C246,408 270,312 319,235C368,158 446,119 553,119M723,1038C755,1018 791,983 832,933l0,541l173,0l0,-1474l-162,0l0,149C801,83 751,35 694,6C637,-23 571,-38 497,-38C378,-38 274,12 187,113C100,213 56,346 56,513C56,669 96,804 176,919C255,1033 369,1090 517,1090C599,1090 668,1073 723,1038z"/>
+<glyph unicode="e" horiz-adv-x="1139" d="M962,903C998,849 1022,786 1034,714C1045,665 1050,586 1050,478l-785,0C268,369 294,282 342,217C390,151 464,118 565,118C659,118 734,149 790,211C822,247 845,289 858,336l177,0C1030,297 1015,253 989,205C962,156 933,117 900,86C845,33 778,-3 697,-22C654,-33 605,-38 550,-38C417,-38 304,11 211,108C118,205 72,340 72,515C72,687 119,827 212,934C305,1041 427,1095 578,1095C654,1095 728,1077 799,1042C870,1006 925,960 962,903M865,621C858,699 841,761 814,808C765,895 682,938 567,938C484,938 415,908 359,849C303,789 273,713 270,621z"/>
+<glyph unicode="f" horiz-adv-x="569" d="M216,1398C258,1459 339,1490 459,1490C470,1490 482,1490 494,1489C506,1488 520,1487 535,1486l0,-164C516,1323 503,1324 495,1325C486,1325 478,1325 471,1325C416,1325 384,1311 373,1283C362,1254 357,1182 357,1066l178,0l0,-142l-180,0l0,-924l-178,0l0,924l-149,0l0,142l149,0l0,168C180,1309 193,1363 216,1398z"/>
+<glyph unicode="g" horiz-adv-x="1139" d="M730,1028C764,1005 799,971 834,926l0,135l166,0l0,-974C1000,-49 980,-156 940,-235C865,-380 724,-453 517,-453C402,-453 305,-427 226,-375C147,-324 103,-243 94,-133l183,0C286,-181 303,-218 329,-244C370,-284 434,-304 521,-304C659,-304 749,-255 792,-158C817,-101 829,2 827,149C791,94 748,54 697,27C646,0 579,-13 496,-13C380,-13 279,28 192,111C105,193 61,329 61,519C61,698 105,838 193,939C280,1040 386,1090 510,1090C594,1090 667,1069 730,1028M543,931C416,931 330,872 283,753C258,690 246,607 246,504C246,383 271,292 320,229C369,166 434,134 517,134C646,134 737,192 790,309C819,375 834,452 834,540C834,673 807,771 752,835C697,899 628,931 543,931z"/>
+<glyph unicode="h" horiz-adv-x="1139" d="M132,1474l180,0l0,-548C355,980 393,1018 427,1040C485,1078 557,1097 644,1097C799,1097 905,1043 960,934C990,875 1005,792 1005,687l0,-687l-185,0l0,675C820,754 810,811 790,848C757,907 696,936 606,936C531,936 464,910 403,859C342,808 312,711 312,568l0,-568l-180,0z"/>
+<glyph unicode="i" horiz-adv-x="455" d="M132,1066l183,0l0,-1066l-183,0M132,1469l183,0l0,-204l-183,0z"/>
+<glyph unicode="j" horiz-adv-x="455" d="M312,1261l-180,0l0,208l180,0M-38,-271C43,-268 91,-261 108,-249C124,-238 132,-201 132,-140l0,1206l180,0l0,-1225C312,-237 299,-295 274,-334C232,-399 152,-432 35,-432C26,-432 17,-432 8,-431C-2,-430 -17,-429 -38,-427z"/>
+<glyph unicode="l" horiz-adv-x="455" d="M137,1469l180,0l0,-1469l-180,0z"/>
+<glyph unicode="m" horiz-adv-x="1706" d="M132,1071l178,0l0,-152C353,972 391,1010 426,1034C485,1075 553,1095 628,1095C713,1095 782,1074 834,1032C863,1008 890,973 914,926C954,983 1001,1026 1055,1054C1109,1081 1170,1095 1237,1095C1381,1095 1479,1043 1531,939C1559,883 1573,808 1573,713l0,-713l-187,0l0,744C1386,815 1368,864 1333,891C1297,918 1253,931 1202,931C1131,931 1071,907 1020,860C969,813 943,734 943,623l0,-623l-183,0l0,699C760,772 751,825 734,858C707,908 656,933 581,933C513,933 451,907 396,854C340,801 312,706 312,568l0,-568l-180,0z"/>
+<glyph unicode="n" horiz-adv-x="1139" d="M132,1071l171,0l0,-152C354,982 407,1027 464,1054C521,1081 584,1095 653,1095C805,1095 908,1042 961,936C990,878 1005,795 1005,687l0,-687l-183,0l0,675C822,740 812,793 793,833C761,900 703,933 619,933C576,933 541,929 514,920C465,905 421,876 384,832C354,797 335,760 326,723C317,685 312,631 312,561l0,-561l-180,0z"/>
+<glyph unicode="o" horiz-adv-x="1139" d="M869,553C869,653 853,734 821,797C770,896 683,945 559,945C449,945 369,903 319,819C269,735 244,634 244,515C244,401 269,306 319,230C369,154 448,116 557,116C676,116 758,161 803,252C847,342 869,442 869,553M1057,558C1057,385 1015,243 931,130C847,17 717,-39 540,-39C393,-39 276,11 189,111C102,210 59,344 59,512C59,692 105,835 196,942C287,1049 410,1102 564,1102C702,1102 819,1056 914,964C1009,872 1057,737 1057,558z"/>
+<glyph unicode="p" horiz-adv-x="1139" d="M877,542C877,627 865,701 840,762C793,880 708,939 584,939C459,939 374,877 328,752C303,685 291,601 291,498C291,415 303,345 328,287C375,176 460,121 584,121C668,121 738,156 794,227C849,297 877,402 877,542M118,1066l175,0l0,-142C329,973 368,1010 411,1037C472,1077 543,1097 625,1097C746,1097 849,1051 934,958C1019,865 1061,732 1061,559C1061,326 1000,159 878,59C801,-4 711,-36 608,-36C527,-36 460,-18 405,17C373,37 337,71 298,120l0,-547l-180,0z"/>
+<glyph unicode="r" horiz-adv-x="682" d="M137,1071l171,0l0,-185C322,922 356,966 411,1018C466,1069 529,1095 600,1095C603,1095 609,1095 617,1094C625,1093 639,1092 658,1090l0,-190C647,902 638,903 629,904C620,905 610,905 599,905C508,905 439,876 390,818C341,759 317,692 317,616l0,-616l-180,0z"/>
+<glyph unicode="t" horiz-adv-x="569" d="M168,1370l182,0l0,-299l171,0l0,-147l-171,0l0,-699C350,188 363,163 388,150C402,143 425,139 458,139C467,139 476,139 486,140C496,140 508,141 521,142l0,-142C500,-6 479,-10 457,-13C434,-16 410,-17 384,-17C300,-17 243,5 213,48C183,91 168,146 168,215l0,709l-145,0l0,147l145,0z"/>
+<glyph unicode="u" horiz-adv-x="1139" d="M312,1071l0,-711C312,305 321,261 338,226C370,162 430,130 517,130C642,130 728,186 773,298C798,358 810,440 810,545l0,526l180,0l0,-1071l-170,0l2,158C799,117 770,83 735,55C666,-1 583,-29 485,-29C332,-29 228,22 173,124C143,179 128,252 128,343l0,728z"/>
+<glyph unicode="w" horiz-adv-x="1479" d="M215,1071l206,-844l209,844l202,0l210,-839l219,839l180,0l-311,-1071l-187,0l-218,829l-211,-829l-187,0l-309,1071z"/>
+<glyph unicode="x" horiz-adv-x="1024" d="M30,1071l233,0l246,-377l249,377l219,-5l-361,-517l377,-549l-230,0l-266,402l-258,-402l-228,0l377,549z"/>
+</font>
+
+	<rect id="XMLID_1_" x="47.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_2_" x="74.9" y="79.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_3_" x="47.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_4_" x="47.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_5_" x="74.9" y="133.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_6_" x="74.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_7_" x="101.9" y="106.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_8_" x="101.9" y="133.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_9_" x="128.9" y="160.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_10_" x="101.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_11_" x="128.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_12_" x="101.9" y="79.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_13_" x="128.9" y="133.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_14_" x="155.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_15_" x="182.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_16_" x="236.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_17_" x="209.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_18_" x="209.9" y="214.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_19_" x="236.9" y="133.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_20_" x="209.9" y="106.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_21_" x="209.9" y="241.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_22_" x="236.9" y="106.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_23_" x="236.9" y="160.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_24_" x="47.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_25_" x="47.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_26_" x="101.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_27_" x="74.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_29_" x="155.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_30_" x="182.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_31_" x="209.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_32_" x="155.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_33_" x="182.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_34_" x="209.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_35_" x="128.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_36_" x="155.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_37_" x="182.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_38_" x="128.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_39_" x="155.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_40_" x="74.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_41_" x="101.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_42_" x="128.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_43_" x="182.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_44_" x="209.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_45_" x="236.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_46_" x="47.9" y="187.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_47_" x="47.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_48_" x="47.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_50_" x="74.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_49_" x="74.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_58_" x="128.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_57_" x="128.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_56_" x="155.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_55_" x="155.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_54_" x="182.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_53_" x="182.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_60_" x="236.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_59_" x="236.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_64_" x="155.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_63_" x="182.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_62_" x="209.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_61_" x="236.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_72_" x="263.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_71_" x="263.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_70_" x="263.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_69_" x="263.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_68_" x="263.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_67_" x="263.9" y="187.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_66_" x="263.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_65_" x="263.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_81_" x="47.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_80_" x="74.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_79_" x="101.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_78_" x="128.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_77_" x="155.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_76_" x="182.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_75_" x="209.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_74_" x="236.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_73_" x="263.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_90_" x="290.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_89_" x="290.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_88_" x="290.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_87_" x="290.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_86_" x="290.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_85_" x="290.9" y="187.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_84_" x="290.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_83_" x="290.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_82_" x="290.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_100_" x="47.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_99_" x="74.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_98_" x="101.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_97_" x="128.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_96_" x="155.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_95_" x="182.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_94_" x="209.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_93_" x="236.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_92_" x="263.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_91_" x="290.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_110_" x="20.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_109_" x="20.9" y="106.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_108_" x="20.9" y="160.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_107_" x="20.9" y="79.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_106_" x="20.9" y="133.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_105_" x="20.9" y="187.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_104_" x="20.9" y="214.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_103_" x="20.9" y="241.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_102_" x="20.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_101_" x="20.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_28_" x="74.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_52_" x="101.9" y="214.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_51_" x="101.9" y="241.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_121_" x="101.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_120_" x="128.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_119_" x="155.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_118_" x="182.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_117_" x="236.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_116_" x="209.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_115_" x="47.9" y="349.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_114_" x="263.9" y="349.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_113_" x="290.9" y="349.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_112_" x="20.9" y="349.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_111_" x="74.9" y="349.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_131_" x="344.9" y="106.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_130_" x="344.9" y="133.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_129_" x="344.9" y="187.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_128_" x="344.9" y="79.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_126_" x="344.9" y="52.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_125_" x="344.9" y="268.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_124_" x="344.9" y="295.1" fill="#FFFFFF" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_123_" x="344.9" y="214.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_122_" x="344.9" y="241.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<rect id="XMLID_127_" x="344.9" y="160.1" stroke="#4DA9DF" stroke-miterlimit="10" width="27" height="27"/>
+<text id="XMLID_132_" transform="matrix(1 0 0 1 75.9265 421.0659)" font-family="'MyriadPro-Regular'" font-size="18">left = 2</text>
+<text id="XMLID_133_" transform="matrix(1 0 0 1 258.8911 420.0659)" font-family="'MyriadPro-Regular'" font-size="18">right = 9</text>
+<text id="XMLID_134_" transform="matrix(1 0 0 1 398.9268 97.8379)" font-family="'MyriadPro-Regular'" font-size="18">up = 1</text>
+<text id="XMLID_135_" transform="matrix(1 0 0 1 398.9268 286.5879)" font-family="'MyriadPro-Regular'" font-size="18">down = 8</text>
+<rect id="XMLID_136_" x="74.9" y="79.1" fill="none" stroke="#F26B57" stroke-miterlimit="10" width="189" height="189"/>
+<g id="XMLID_137_">
+	<g id="XMLID_148_">
+		<line id="XMLID_151_" fill="none" stroke="#000000" stroke-miterlimit="10" x1="89.4" y1="403.1" x2="89.4" y2="384.9"/>
+		<g id="XMLID_149_">
+			<polygon id="XMLID_150_" points="92.3,386.9 89.4,376.1 86.5,386.9 			"/>
+		</g>
+	</g>
+</g>
+<g id="XMLID_138_">
+	<g id="XMLID_156_">
+		<line id="XMLID_164_" fill="none" stroke="#000000" stroke-miterlimit="10" x1="277" y1="403.1" x2="277" y2="384.9"/>
+		<g id="XMLID_157_">
+			<polygon id="XMLID_158_" points="279.9,386.9 277,376.1 274.1,386.9 			"/>
+		</g>
+	</g>
+</g>
+<g id="XMLID_144_">
+	<g id="XMLID_160_">
+		<line id="XMLID_163_" fill="none" stroke="#000000" stroke-miterlimit="10" x1="398.9" y1="92.8" x2="380.8" y2="92.8"/>
+		<g id="XMLID_161_">
+			<polygon id="XMLID_162_" points="382.8,89.9 371.9,92.8 382.8,95.7 			"/>
+		</g>
+	</g>
+</g>
+<g id="XMLID_145_">
+	<g id="XMLID_166_">
+		<line id="XMLID_169_" fill="none" stroke="#000000" stroke-miterlimit="10" x1="398.9" y1="281.5" x2="380.8" y2="281.5"/>
+		<g id="XMLID_167_">
+			<polygon id="XMLID_168_" points="382.8,278.6 371.9,281.5 382.8,284.4 			"/>
+		</g>
+	</g>
+</g>
+<text id="XMLID_139_" transform="matrix(1 0 0 1 60.9268 15.0659)" font-family="'MyriadPro-Regular'" font-size="18">minArea = (9 - 2) x (8 - 1) = 49</text>
+<text id="XMLID_140_" transform="matrix(1 0 0 1 143.9268 339.5659)" font-family="'MyriadPro-Regular'" font-size="12">projection</text>
+<text id="XMLID_141_" transform="matrix(0 -1 1 0 334.6777 213.228)" font-family="'MyriadPro-Regular'" font-size="12">projection</text>
+<text id="XMLID_142_" transform="matrix(1 0 0 1 30.9268 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">0</text>
+<text id="XMLID_143_" transform="matrix(1 0 0 1 57.9859 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">1</text>
+<text id="XMLID_152_" transform="matrix(1 0 0 1 85.045 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">2</text>
+<text id="XMLID_146_" transform="matrix(1 0 0 1 112.1041 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">3</text>
+<text id="XMLID_171_" transform="matrix(1 0 0 1 139.1632 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">4</text>
+<text id="XMLID_170_" transform="matrix(1 0 0 1 166.2223 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">5</text>
+<text id="XMLID_154_" transform="matrix(1 0 0 1 193.2814 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">6</text>
+<text id="XMLID_153_" transform="matrix(1 0 0 1 220.3407 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">7</text>
+<text id="XMLID_174_" transform="matrix(1 0 0 1 247.3994 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">8</text>
+<text id="XMLID_173_" transform="matrix(1 0 0 1 274.4585 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">9</text>
+<text id="XMLID_172_" transform="matrix(1 0 0 1 297.9268 44.0659)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">10</text>
+<text id="XMLID_185_" transform="matrix(0 -1 1 0 11.7184 69.2476)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">0</text>
+<text id="XMLID_184_" transform="matrix(0 -1 1 0 11.7184 96.1958)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">1</text>
+<text id="XMLID_183_" transform="matrix(0 -1 1 0 11.7184 123.144)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">2</text>
+<text id="XMLID_182_" transform="matrix(0 -1 1 0 11.7184 150.0913)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">3</text>
+<text id="XMLID_181_" transform="matrix(0 -1 1 0 11.7184 177.0396)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">4</text>
+<text id="XMLID_180_" transform="matrix(0 -1 1 0 11.7184 203.9878)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">5</text>
+<text id="XMLID_179_" transform="matrix(0 -1 1 0 11.7185 230.936)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">6</text>
+<text id="XMLID_178_" transform="matrix(0 -1 1 0 11.7185 257.8833)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">7</text>
+<text id="XMLID_177_" transform="matrix(0 -1 1 0 11.7185 284.8315)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">8</text>
+<text id="XMLID_176_" transform="matrix(0 -1 1 0 11.7185 311.7798)" fill="#4DA9DE" font-family="'MyriadPro-Regular'" font-size="14">9</text>
+</svg>

@@ -1,8 +1,16 @@
 import { useCallback, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink as RouterNavLink, useNavigate } from 'react-router-dom';
 import { useProblems } from '../lib/problems';
 import { useStore } from '../lib/store';
 import { pickRandom } from '../lib/utils';
+
+function NavLink({ to, label }: { to: string; label: string }) {
+  return (
+    <RouterNavLink to={to} className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
+      {label}
+    </RouterNavLink>
+  );
+}
 
 function currentTheme(): 'dark' | 'light' {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
@@ -35,9 +43,9 @@ export default function Header() {
           <span className="brand-name">FreeCode</span>
         </Link>
         <nav className="header-nav">
-          <Link to="/" className="nav-link active">
-            Problems
-          </Link>
+          <NavLink to="/" label="Problems" />
+          <NavLink to="/top-interview-150" label="Interview 150" />
+          <NavLink to="/course" label="Course" />
         </nav>
         <div className="header-actions">
           <button

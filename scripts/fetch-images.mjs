@@ -2,30 +2,14 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const DESC_DIR = path.resolve('public/descriptions');
-const IMG_DIR = path.resolve('public/assets/img');
+const JOBS = [
+  { dir: path.resolve('public/descriptions'), out: path.resolve('public/assets/img'), prefix: '/assets/img' },
+  { dir: path.resolve('public/solutions'), out: path.resolve('public/assets/sol-img'), prefix: '/assets/sol-img' },
+];
 const CONCURRENCY = Number(process.env.CONC || 8);
-const URL_RE = /https:\/\/[^"'\s\\]+?\.(?:png|jpe?g|svg|gif|webp)/gi;
+const URL_RE = /https:\/\/[^"'\s\\)]+?\.(?:png|jpe?g|svg|gif|webp)/gi;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-function collect() {
-  const files = fs.readdirSync(DESC_DIR).filter((f) => f.endsWith('.json'));
-  const urls = new Map(); // url -> Set(slug)
-  const docs = new Map();
-  for (const f of files) {
-    const p = path.join(DESC_DIR, f);
-    const raw = fs.readFileSync(p, 'utf8');
-    const doc = JSON.parse(raw);
-    docs.set(f, { raw, doc });
-    if (!doc.c) continue;
-    for (const u of doc.c.match(URL_RE) || []) {
-      if (!urls.has(u)) urls.set(u, new Set());
-      urls.get(u).add(f);
-    }
-  }
-  return { urls, docs };
-}
 
 function localName(url) {
   const ext = (url.match(/\.(png|jpe?g|svg|gif|webp)$/i)?.[0] || '.bin').toLowerCase();
@@ -56,16 +40,20 @@ async function download(url, dest) {
   return false;
 }
 
-async function main() {
-  fs.mkdirSync(IMG_DIR, { recursive: true });
-  const { urls, docs } = collect();
-  console.log(`problems scanned : ${docs.size}`);
-  console.log(`image refs       : ${[...urls.values()].reduce((a, s) => a + s.size, 0)}`);
-  console.log(`unique urls      : ${urls.size}`);
+async function processJob(job) {
+  fs.mkdirSync(job.out, { recursive: true });
+  const files = fs.readdirSync(job.dir).filter((f) => f.endsWith('.json'));
+  const urls = new Set();
+  const docs = [];
+  for (const f of files) {
+    const doc = JSON.parse(fs.readFileSync(path.join(job.dir, f), 'utf8'));
+    if (!doc.c) continue;
+    docs.push({ f, doc });
+    for (const u of doc.c.match(URL_RE) || []) urls.add(u);
+  }
 
-  // skip already-downloaded
-  const todo = [...urls.keys()].filter((u) => !fs.existsSync(path.join(IMG_DIR, localName(u))));
-  console.log(`to download      : ${todo.length}`);
+  const todo = [...urls].filter((u) => !fs.existsSync(path.join(job.out, localName(u))));
+  console.log(`\n[${path.basename(job.dir)}] files: ${files.length}, unique urls: ${urls.size}, to download: ${todo.length}`);
 
   let cursor = 0;
   let ok = 0;
@@ -73,35 +61,35 @@ async function main() {
   async function worker() {
     while (cursor < todo.length) {
       const url = todo[cursor++];
-      const dest = path.join(IMG_DIR, localName(url));
-      if (await download(url, dest)) ok++;
+      if (await download(url, path.join(job.out, localName(url)))) ok++;
       else failed.push(url);
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  console.log(`downloaded       : ${ok}, failed: ${failed.length}`);
+  console.log(`downloaded: ${ok}, failed: ${failed.length}`);
 
-  // rewrite descriptions for successfully downloaded images only
   let rewritten = 0;
-  for (const [f, { doc }] of docs) {
-    if (!doc.c) continue;
+  for (const { f, doc } of docs) {
     let changed = false;
-    for (const [url] of urls) {
+    for (const url of urls) {
       if (!doc.c.includes(url)) continue;
       const name = localName(url);
-      if (!fs.existsSync(path.join(IMG_DIR, name))) continue;
-      doc.c = doc.c.split(url).join(`/assets/img/${name}`);
+      if (!fs.existsSync(path.join(job.out, name))) continue;
+      doc.c = doc.c.split(url).join(`${job.prefix}/${name}`);
       changed = true;
     }
     if (changed) {
-      fs.writeFileSync(path.join(DESC_DIR, f), JSON.stringify(doc));
+      fs.writeFileSync(path.join(job.dir, f), JSON.stringify(doc));
       rewritten++;
     }
   }
-  console.log(`files rewritten  : ${rewritten}`);
-  const sizeMB = (fs.readdirSync(IMG_DIR).reduce((a, f) => a + fs.statSync(path.join(IMG_DIR, f)).size, 0) / 1048576).toFixed(1);
-  console.log(`images on disk   : ${fs.readdirSync(IMG_DIR).length} files, ${sizeMB} MB`);
-  if (failed.length) process.exitCode = 2;
+  console.log(`files rewritten: ${rewritten}`);
+  const sizeMB = (fs.readdirSync(job.out).reduce((a, f) => a + fs.statSync(path.join(job.out, f)).size, 0) / 1048576).toFixed(1);
+  console.log(`on disk: ${fs.readdirSync(job.out).length} files, ${sizeMB} MB`);
+}
+
+async function main() {
+  for (const job of JOBS) await processJob(job);
 }
 
 main().catch((e) => {

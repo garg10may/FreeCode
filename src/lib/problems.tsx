@@ -36,32 +36,49 @@ export function ProblemsProvider({ children }: { children: ReactNode }) {
   const [companyMap, setCompanyMap] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
-    if (problems) return;
-    loadProblems()
-      .then(setProblems)
-      .catch((e: unknown) =>
-        setError(e instanceof Error ? e.message : String(e))
-      );
+    let cancelled = false;
+
+    async function boot() {
+      const [probs, rawTags, map] = await Promise.all([
+        loadProblems(),
+        loadJson<{ slug: string; name: string; questionCount: number }[]>('data/companies.json').catch(
+          () => []
+        ),
+        loadJson<Record<string, string[]>>('data/company-map.json').catch(() => ({})),
+      ]);
+      if (cancelled) return;
+      setCompanyMap(map);
+      setCompanies(rawTags.map((c) => [c.slug, c.name, c.questionCount]));
+      setProblems(probs);
+    }
+
+    if (!problems && !error) {
+      boot().catch((e: unknown) => {
+        if (!cancelled) setError(e instanceof Error ? e.message : String(e));
+      });
+    } else if (!companies) {
+      // problems came from cache — still ensure company data is loaded
+      Promise.all([
+        loadJson<{ slug: string; name: string; questionCount: number }[]>('data/companies.json').catch(
+          () => []
+        ),
+        loadJson<Record<string, string[]>>('data/company-map.json').catch(() => ({})),
+      ])
+        .then(([rawTags, map]) => {
+          if (cancelled) return;
+          setCompanyMap(map);
+          setCompanies(rawTags.map((c) => [c.slug, c.name, c.questionCount]));
+        })
+        .catch(() => {
+          /* optional */
+        });
+    }
+
+    return () => {
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (!problems || companies) return;
-    Promise.all([
-      loadJson<[{ slug: string; name: string; questionCount: number }]>('data/companies.json').catch(
-        () => []
-      ),
-      loadJson<Record<string, string[]>>('data/company-map.json').catch(() => ({})),
-    ])
-      .then(([rawTags, map]) => {
-        setCompanyMap(map);
-        setCompanies(rawTags.map((c) => [c.slug, c.name, c.questionCount]));
-      })
-      .catch(() => {
-        /* optional files */
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [problems]);
 
   const value = useMemo(
     () => ({ problems, error, companies, companyMap }),
