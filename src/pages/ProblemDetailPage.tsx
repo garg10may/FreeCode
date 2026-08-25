@@ -88,6 +88,7 @@ export default function ProblemDetailPage() {
           {meta && (
             <span className={`pill ${DIFF_CLASS[meta.difficulty]}`}>{meta.difficulty}</span>
           )}
+          {meta?.paidOnly && <span className="badge-premium">Premium</span>}
           <button
             className={`btn ghost small${ac ? ' accent' : ''}`}
             onClick={() => store.toggleAC(slug)}
@@ -123,40 +124,47 @@ export default function ProblemDetailPage() {
           </a>
         </div>
 
-        <div className="desc-body" aria-busy={loading}>
-          {loading && <div className="spinner small-spin" aria-label="Loading description" />}
-
-          {!loading && loadError && (
-            <div className="error-inline">
-              <p>Couldn’t load this problem: {loadError}</p>
-              <p className="muted">
-                The local dataset may be incomplete — run{' '}
-                <code>npm run fetch:descriptions</code> to (re)download statements.
-              </p>
-            </div>
-          )}
-
-          {!loading && !loadError && data && (data.paidOnly || !data.content) && (
-            <div className="error-inline">
+        <div className="desc-body" aria-busy={loading && !meta?.paidOnly}>
+          {meta?.paidOnly ? (
+            <div className="premium-note">
+              <h3>🔒 Premium problem</h3>
               <p>
-                This is a premium-only problem, so its full statement isn’t publicly available.
+                This problem is part of LeetCode’s paid subscription, so its statement isn’t
+                publicly available — there’s no way to fetch it without an account.
               </p>
-              <p className="muted">Open it on LeetCode with a subscription to view it.</p>
+              <p className="muted">
+                Everything else still works here: take notes, use the editor, and track it as
+                solved.
+              </p>
             </div>
-          )}
-
-          {!loading && !loadError && data && data.content && (
+          ) : (
             <>
-              <div dangerouslySetInnerHTML={{ __html: sanitize(data.content) }} />
-              {data.hints.length > 0 && (
-                <div className="hints">
-                  {data.hints.map((h, i) => (
-                    <details key={i} className="hint">
-                      <summary>Hint {i + 1}</summary>
-                      <div dangerouslySetInnerHTML={{ __html: sanitize(h) }} />
-                    </details>
-                  ))}
+              {loading && <div className="spinner small-spin" aria-label="Loading description" />}
+
+              {!loading && loadError && (
+                <div className="error-inline">
+                  <p>Couldn’t load this problem: {loadError}</p>
+                  <p className="muted">
+                    The local dataset may be incomplete — run{' '}
+                    <code>npm run fetch:descriptions</code> to (re)download statements.
+                  </p>
                 </div>
+              )}
+
+              {!loading && !loadError && data?.content && (
+                <>
+                  <div dangerouslySetInnerHTML={{ __html: sanitize(data.content) }} />
+                  {data.hints.length > 0 && (
+                    <div className="hints">
+                      {data.hints.map((h, i) => (
+                        <details key={i} className="hint">
+                          <summary>Hint {i + 1}</summary>
+                          <div dangerouslySetInnerHTML={{ __html: sanitize(h) }} />
+                        </details>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </>
           )}

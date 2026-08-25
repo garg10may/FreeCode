@@ -8,7 +8,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "fetch:problems": "node scripts/fetch-problems.mjs",
-    "fetch:descriptions": "node scripts/fetch-descriptions.mjs"
+    "fetch:descriptions": "node scripts/fetch-descriptions.mjs",
+    "fetch:premium": "node scripts/fetch-descriptions.mjs --premium"
   },
   "dependencies": {
     "dompurify": "^3.4.14",

@@ -21,6 +21,14 @@ npm run dev        # http://localhost:5173
 
 The dataset ships with the repo (`public/data/problems.json` + `public/descriptions/*.json`), so the app is immediately usable offline.
 
+### Zero external dependencies (verified)
+
+- **No runtime API calls** — every statement loads from `public/descriptions/<slug>.json`
+- **All figures localized** — 1,417 CDN images (~74 MB) downloaded into `public/assets/img/`, statement HTML rewritten to local paths; includes one embedded `.mp4`
+- No external fonts (system stack), no iframes, no remote CSS/JS; favicon is an inline data URI
+- The only remaining external references are 91 plain `<a href>` links to leetcode.com (navigation, not resources)
+- 3 images that are *broken on LeetCode's own CDN* were patched: real sibling assets found where possible, otherwise replaced with an honest inline placeholder
+
 ## Refreshing the dataset
 
 ```bash
@@ -29,6 +37,27 @@ npm run fetch:descriptions    # re-fetch all statements -> public/descriptions/<
 ```
 
 Both scripts are idempotent/resumable; use `--force` on `fetch:descriptions` to re-download everything.
+
+### Premium problem statements (781 locked problems)
+
+LeetCode only serves premium statements to subscribers, so fetching them requires **your own LeetCode Premium session**:
+
+1. Log in to [leetcode.com](https://leetcode.com) with a premium account
+2. DevTools → **Application** → **Cookies** → `https://leetcode.com`
+3. Copy the values of `LEETCODE_SESSION` and `csrftoken`
+4. Create `.lc-secrets.json` in the project root (gitignored):
+
+   ```json
+   { "session": "<LEETCODE_SESSION value>", "csrftoken": "<csrftoken value>" }
+   ```
+
+5. Run:
+
+   ```bash
+   npm run fetch:premium
+   ```
+
+The script first verifies your session actually unlocks premium content, then downloads all missing statements (~2 min). Tip: one month of Premium is enough — fetch everything once and it stays local forever. The app picks the files up automatically; no rebuild needed.
 
 ## Production build
 
