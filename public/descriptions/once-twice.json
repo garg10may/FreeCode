@@ -1,0 +1,1 @@
+{"q":"3595","t":"Once Twice","d":"Medium","p":true,"c":null,"h":["Use bitmasks"],"m":"{\n  \"name\": \"onceTwice\",\n  \"params\": [\n    {\n      \"name\": \"nums\",\n      \"type\": \"integer[]\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer[]\"\n  }\n}","g":[{"name":"Array","slug":"array"},{"name":"Bit Manipulation","slug":"bit-manipulation"}]}

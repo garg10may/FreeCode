@@ -1,0 +1,1 @@
+{"q":"256","t":"Paint House","d":"Medium","p":true,"c":null,"h":[],"m":"{\r\n  \"name\": \"minCost\",\r\n  \"params\": [\r\n    {\r\n      \"name\": \"costs\",\r\n      \"type\": \"integer[][]\"\r\n    }\r\n  ],\r\n  \"return\": {\r\n    \"type\": \"integer\"\r\n  }\r\n}","g":[{"name":"Array","slug":"array"},{"name":"Dynamic Programming","slug":"dynamic-programming"}]}

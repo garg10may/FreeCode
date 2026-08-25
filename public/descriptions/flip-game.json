@@ -1,0 +1,1 @@
+{"q":"293","t":"Flip Game","d":"Easy","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"generatePossibleNextMoves\",\n  \"params\": [\n    {\n      \"name\": \"currentState\",\n      \"type\": \"string\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"list<string>\",\n    \"dealloc\": true\n  }\n}","g":[{"name":"String","slug":"string"}]}

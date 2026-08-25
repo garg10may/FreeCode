@@ -1,0 +1,1 @@
+{"q":"3696","t":"Maximum Distance Between Unequal Words in Array I","d":"Easy","p":true,"c":null,"h":["Use bruteforce"],"m":"{\n  \"name\": \"maxDistance\",\n  \"params\": [\n    {\n      \"name\": \"words\",\n      \"type\": \"string[]\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  }\n}","g":[{"name":"Array","slug":"array"},{"name":"String","slug":"string"}]}

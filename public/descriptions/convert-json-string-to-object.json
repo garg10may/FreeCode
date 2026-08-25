@@ -1,0 +1,1 @@
+{"q":"2759","t":"Convert JSON String to Object","d":"Hard","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"jsonParse\",\n  \"params\": [\n    {\n      \"name\": \"str\",\n      \"type\": \"string\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  },\n  \"languages\": [\n    \"javascript\",\n    \"typescript\"\n  ],\n  \"manual\": true\n}","g":[]}

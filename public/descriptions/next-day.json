@@ -1,0 +1,1 @@
+{"q":"2758","t":"Next Day","d":"Easy","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"foobar\",\n  \"params\": [\n    {\n      \"type\": \"string\",\n      \"name\": \"date\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  },\n  \"languages\": [\n    \"javascript\",\n    \"typescript\"\n  ],\n  \"manual\": true\n}","g":[]}

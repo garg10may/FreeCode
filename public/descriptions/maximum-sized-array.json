@@ -1,0 +1,1 @@
+{"q":"3344","t":"Maximum Sized Array","d":"Medium","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"maxSizedArray\",\n  \"params\": [\n    {\n      \"name\": \"s\",\n      \"type\": \"long\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  }\n}","g":[{"name":"Binary Search","slug":"binary-search"},{"name":"Bit Manipulation","slug":"bit-manipulation"}]}

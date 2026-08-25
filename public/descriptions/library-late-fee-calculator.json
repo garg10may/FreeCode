@@ -1,0 +1,1 @@
+{"q":"3687","t":"Library Late Fee Calculator","d":"Easy","p":true,"c":null,"h":["Simulate as described"],"m":"{\n  \"name\": \"lateFee\",\n  \"params\": [\n    {\n      \"name\": \"daysLate\",\n      \"type\": \"integer[]\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  }\n}","g":[{"name":"Array","slug":"array"},{"name":"Simulation","slug":"simulation"}]}

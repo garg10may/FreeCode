@@ -1,0 +1,1 @@
+{"q":"3353","t":"Minimum Total Operations","d":"Easy","p":true,"c":null,"h":["Would you ever change the last element of the array?"],"m":"{\n  \"name\": \"minOperations\",\n  \"params\": [\n    {\n      \"name\": \"nums\",\n      \"type\": \"integer[]\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  }\n}","g":[{"name":"Array","slug":"array"}]}

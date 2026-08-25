@@ -1,0 +1,1 @@
+{"q":"2803","t":"Factorial Generator","d":"Easy","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"factorial\",\n  \"params\": [\n    {\n      \"name\": \"n\",\n      \"type\": \"integer\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  },\n  \"languages\": [\n    \"javascript\",\n    \"typescript\"\n  ],\n  \"manual\": true\n}","g":[]}

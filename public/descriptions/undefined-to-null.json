@@ -1,0 +1,1 @@
+{"q":"2775","t":"Undefined to Null","d":"Medium","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"undefinedToNull\",\n  \"params\": [\n    {\n      \"name\": \"obj\",\n      \"type\": \"string\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"string\"\n  },\n  \"languages\": [\n    \"javascript\",\n    \"typescript\"\n  ],\n  \"manual\": true\n}","g":[]}

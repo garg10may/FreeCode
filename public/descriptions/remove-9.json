@@ -1,0 +1,1 @@
+{"q":"660","t":"Remove 9","d":"Hard","p":true,"c":null,"h":[],"m":"{\r\n  \"name\": \"newInteger\",\r\n  \"params\": [\r\n    {\r\n      \"name\": \"n\",\r\n      \"type\": \"integer\"\r\n    }\r\n  ],\r\n  \"return\": {\r\n    \"type\": \"integer\"\r\n  }\r\n}\r\n","g":[{"name":"Math","slug":"math"}]}

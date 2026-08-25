@@ -1,0 +1,1 @@
+{"q":"651","t":"4 Keys Keyboard","d":"Medium","p":true,"c":null,"h":[],"m":"{\n  \"name\": \"maxA\",\n  \"params\": [\n    {\n      \"name\": \"n\",\n      \"type\": \"integer\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  }\n}","g":[{"name":"Math","slug":"math"},{"name":"Dynamic Programming","slug":"dynamic-programming"}]}
