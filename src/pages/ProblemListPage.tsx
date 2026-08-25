@@ -13,7 +13,7 @@ const PAGE_SIZE = 50;
 const VALID_DIFFS: Difficulty[] = ['Easy', 'Medium', 'Hard'];
 
 export default function ProblemListPage() {
-  const { problems, error } = useProblems();
+  const { problems, error, companies, companyMap } = useProblems();
   const { states, isAC, toggleAC, isFav, toggleFav } = useStore();
   const [params, setParams] = useSearchParams();
   const location = useLocation();
@@ -56,6 +56,7 @@ export default function ProblemListPage() {
   );
   const status = get('status') as StatusFilter;
   const tag = get('tag');
+  const co = get('co');
   const sortKey = (get('sort') || 'id') as SortKey;
   const sortDir = (get('dir') || 'asc') as SortDir;
   const freeOnly = get('free') === '1';
@@ -64,6 +65,7 @@ export default function ProblemListPage() {
   const setQ = (v: string) => mutate((p) => (v ? p.set('q', v) : p.delete('q')));
   const setStatus = (v: StatusFilter) => mutate((p) => (v ? p.set('status', v) : p.delete('status')));
   const setTag = (v: string) => mutate((p) => (v ? p.set('tag', v) : p.delete('tag')));
+  const setCo = (v: string) => mutate((p) => (v ? p.set('co', v) : p.delete('co')));
   const setFreeOnly = (v: boolean) => mutate((p) => (v ? p.set('free', '1') : p.delete('free')));
   const setPage = (n: number) => mutate((p) => (n > 1 ? p.set('page', String(n)) : p.delete('page')));
   const clearPage = () => mutate((p) => p.delete('page'));
@@ -105,6 +107,10 @@ export default function ProblemListPage() {
     else if (status === 'fav') rows = rows.filter((p) => states[p.slug]?.fav);
 
     if (tag) rows = rows.filter((p) => p.tags.includes(tag));
+    if (co) {
+      const set = companyMap ? new Set(companyMap[co] || []) : null;
+      rows = set ? rows.filter((p) => set.has(p.slug)) : [];
+    }
 
     const s = q.trim().toLowerCase();
     if (s) rows = rows.filter((p) => p.id === s || p.title.toLowerCase().includes(s));
@@ -122,6 +128,9 @@ export default function ProblemListPage() {
         case 'ac':
           v = (a.ac ?? -1) - (b.ac ?? -1);
           break;
+        case 'freq':
+          v = (a.freq ?? -1) - (b.freq ?? -1);
+          break;
         case 'diff':
           v = DIFF_RANK[a.difficulty] - DIFF_RANK[b.difficulty];
           break;
@@ -132,7 +141,7 @@ export default function ProblemListPage() {
       return sortDir === 'desc' ? -v : v;
     };
     return [...rows].sort(cmp);
-  }, [problems, freeOnly, diffs, status, tag, q, sortKey, sortDir, states]);
+  }, [problems, freeOnly, diffs, status, tag, co, q, sortKey, sortDir, states, companyMap]);
 
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const safePage = Math.min(pageNum, pages);
@@ -193,6 +202,12 @@ export default function ProblemListPage() {
             clearPage();
           }}
           tags={tags}
+          co={co}
+          onCo={(c) => {
+            setCo(c);
+            clearPage();
+          }}
+          companies={companies}
           freeOnly={freeOnly}
           onFreeOnly={(v) => {
             setFreeOnly(v);
@@ -212,6 +227,7 @@ export default function ProblemListPage() {
         <div className="list-foot">
           <span className="muted result-count">
             Showing {rows.length} of {filtered.length.toLocaleString()} problems
+            {co && companies ? ` · ${companies.find((c) => c[0] === co)?.[1] ?? co}` : ''}
           </span>
           <Pagination page={safePage} pages={pages} onPage={setPage} />
         </div>

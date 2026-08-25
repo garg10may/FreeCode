@@ -544,6 +544,40 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
+.col-freq {
+  width: 120px;
+}
+
+.freq-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-track.mini {
+  width: 56px;
+  height: 6px;
+  flex: none;
+}
+
+.bar-fill.hi {
+  background: #2db55d;
+}
+
+.bar-fill.mid {
+  background: #ffb800;
+}
+
+.bar-fill.lo {
+  background: #8a8a8a;
+}
+
+.freq-num {
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
 .col-diff {
   width: 110px;
 }
@@ -717,6 +751,42 @@ button {
   font-size: 12px;
 }
 
+.freq-badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7b61ff;
+  background: rgba(123, 97, 255, 0.12);
+  border: 1px solid rgba(123, 97, 255, 0.5);
+}
+
+.company-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.company-row .side-title {
+  margin: 0;
+}
+
+.company-chip {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.company-chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .ext-link:hover {
   color: var(--accent);
 }
@@ -787,6 +857,31 @@ button {
   color: var(--accent);
   font-weight: 600;
   user-select: none;
+}
+
+.similar-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.similar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.similar-item:hover {
+  border-color: var(--accent);
+}
+
+.similar-item .pill {
+  padding: 1px 8px;
+  font-size: 11px;
 }
 
 .notes {

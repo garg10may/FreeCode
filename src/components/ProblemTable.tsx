@@ -14,6 +14,19 @@ interface Props {
   onSort: (key: SortKey) => void;
 }
 
+function FreqBar({ freq }: { freq?: number }) {
+  if (freq == null) return <span className="muted">—</span>;
+  const cls = freq >= 70 ? 'hi' : freq >= 40 ? 'mid' : 'lo';
+  return (
+    <span className="freq-cell" title={`Frequency ${freq}`}>
+      <span className="bar-track mini">
+        <span className={`bar-fill ${cls}`} style={{ width: `${Math.min(100, Math.round(freq))}%` }} />
+      </span>
+      <span className="freq-num">{freq}</span>
+    </span>
+  );
+}
+
 function CheckIcon({ on }: { on: boolean }) {
   return (
     <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden>
@@ -84,6 +97,7 @@ export default function ProblemTable(props: Props) {
             {th('id', '#', 'col-id')}
             {th('title', 'Title', 'col-title')}
             {th('ac', 'Acceptance', 'col-ac')}
+            {th('freq', 'Frequency', 'col-freq')}
             {th('diff', 'Difficulty', 'col-diff')}
             <th className="col-fav" aria-label="Favorite" />
           </tr>
@@ -112,6 +126,9 @@ export default function ProblemTable(props: Props) {
                   </Link>
                 </td>
                 <td className="col-ac">{p.ac == null ? '—' : `${p.ac}%`}</td>
+                <td className="col-freq">
+                  <FreqBar freq={p.freq} />
+                </td>
                 <td className="col-diff">
                   <span className={`pill ${DIFF_CLASS[p.difficulty as Difficulty]}`}>
                     {p.difficulty}
@@ -132,7 +149,7 @@ export default function ProblemTable(props: Props) {
           })}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={6} className="empty-state">
+              <td colSpan={7} className="empty-state">
                 No problems match your filters.
               </td>
             </tr>

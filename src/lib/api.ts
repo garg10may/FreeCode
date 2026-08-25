@@ -1,4 +1,4 @@
-import type { Difficulty, QuestionData } from '../types';
+import type { Difficulty, QuestionData, SimilarProblem } from '../types';
 
 interface DescDoc {
   q: string;
@@ -9,6 +9,7 @@ interface DescDoc {
   h: string[];
   m: string | null;
   g: { name: string; slug: string }[];
+  s?: { t: string; s: string; d: Difficulty; p: boolean }[];
 }
 
 const memory = new Map<string, QuestionData>();
@@ -39,6 +40,7 @@ export async function fetchQuestion(slug: string): Promise<QuestionData> {
     hints: doc.h ?? [],
     metaData: doc.m ?? null,
     topicTags: doc.g ?? [],
+    similar: (doc.s ?? []) as SimilarProblem[],
   };
   memory.set(slug, data);
   return data;

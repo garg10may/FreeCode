@@ -16,6 +16,9 @@ interface Props {
   tag: string;
   onTag: (t: string) => void;
   tags: [string, number][];
+  co: string;
+  onCo: (c: string) => void;
+  companies: [string, string, number][] | null;
   freeOnly: boolean;
   onFreeOnly: (v: boolean) => void;
 }
@@ -32,6 +35,9 @@ export default function FilterBar(props: Props) {
     tag,
     onTag,
     tags,
+    co,
+    onCo,
+    companies,
     freeOnly,
     onFreeOnly,
   } = props;
@@ -102,6 +108,23 @@ export default function FilterBar(props: Props) {
       >
         <option value="">All topics</option>
         {tagOptions}
+      </select>
+
+      <select
+        className="select"
+        value={co}
+        onChange={(e) => onCo(e.target.value)}
+        aria-label="Filter by company"
+      >
+        <option value="">All companies</option>
+        {(companies ?? [])
+          .slice()
+          .sort((a, b) => b[2] - a[2] || a[1].localeCompare(b[1]))
+          .map(([slug, name, count]) => (
+            <option key={slug} value={slug}>
+              {name} ({count})
+            </option>
+          ))}
       </select>
 
       <label className="check">

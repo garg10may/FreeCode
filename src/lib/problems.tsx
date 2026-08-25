@@ -5,9 +5,11 @@ import type { Problem } from '../types';
 interface ProblemsCtxShape {
   problems: Problem[] | null;
   error: string | null;
+  companies: [string, string, number][] | null; // [slug, name, questionCount]
+  companyMap: Record<string, string[]>; // problem slug -> company slugs
 }
 
-const Ctx = createContext<ProblemsCtxShape>({ problems: null, error: null });
+const Ctx = createContext<ProblemsCtxShape>({ problems: null, error: null, companies: null, companyMap: {} });
 
 let cache: Problem[] | null = null;
 
@@ -21,9 +23,17 @@ async function loadProblems(): Promise<Problem[]> {
   return data;
 }
 
+async function loadJson<T>(path: string): Promise<T> {
+  const res = await fetch(`${import.meta.env.BASE_URL}${path}`);
+  if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
+  return (await res.json()) as T;
+}
+
 export function ProblemsProvider({ children }: { children: ReactNode }) {
   const [problems, setProblems] = useState<Problem[] | null>(cache);
   const [error, setError] = useState<string | null>(null);
+  const [companies, setCompanies] = useState<[string, string, number][] | null>(null);
+  const [companyMap, setCompanyMap] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
     if (problems) return;
@@ -35,7 +45,28 @@ export function ProblemsProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const value = useMemo(() => ({ problems, error }), [problems, error]);
+  useEffect(() => {
+    if (!problems || companies) return;
+    Promise.all([
+      loadJson<[{ slug: string; name: string; questionCount: number }]>('data/companies.json').catch(
+        () => []
+      ),
+      loadJson<Record<string, string[]>>('data/company-map.json').catch(() => ({})),
+    ])
+      .then(([rawTags, map]) => {
+        setCompanyMap(map);
+        setCompanies(rawTags.map((c) => [c.slug, c.name, c.questionCount]));
+      })
+      .catch(() => {
+        /* optional files */
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [problems]);
+
+  const value = useMemo(
+    () => ({ problems, error, companies, companyMap }),
+    [problems, error, companies, companyMap]
+  );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 

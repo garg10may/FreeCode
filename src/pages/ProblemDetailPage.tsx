@@ -10,7 +10,7 @@ import type { QuestionData } from '../types';
 
 export default function ProblemDetailPage() {
   const { slug = '' } = useParams();
-  const { problems } = useProblems();
+  const { problems, companies, companyMap } = useProblems();
   const store = useStore();
 
   const meta = useMemo(() => problems?.find((p) => p.slug === slug) ?? null, [problems, slug]);
@@ -107,6 +107,11 @@ export default function ProblemDetailPage() {
         </div>
 
         <div className="tag-row">
+          {meta?.freq != null && (
+            <span className="freq-badge" title="LeetCode premium frequency score">
+              Freq {meta.freq}
+            </span>
+          )}
           {(data?.topicTags.length ? data.topicTags : meta?.tags.map((t) => ({ name: prettyTag(t), slug: t })) ?? []).map(
             (t) => (
               <Link key={t.slug} to={`/?tag=${t.slug}`} className="tag-chip">
@@ -124,49 +129,80 @@ export default function ProblemDetailPage() {
           </a>
         </div>
 
-        <div className="desc-body" aria-busy={loading && !meta?.paidOnly}>
-          {meta?.paidOnly ? (
+        <div className="company-row">
+          <span className="side-title">Asked at</span>
+          {(companyMap[slug] ?? []).length > 0 ? (
+            companyMap[slug].map((cSlug) => {
+              const c = companies?.find((x) => x[0] === cSlug);
+              return (
+                <Link key={cSlug} to={`/?co=${cSlug}`} className="company-chip">
+                  {c?.[1] ?? cSlug}
+                </Link>
+              );
+            })
+          ) : (
+            <span className="muted">No company data</span>
+          )}
+        </div>
+
+        <div className="desc-body" aria-busy={loading}>
+          {loading && <div className="spinner small-spin" aria-label="Loading description" />}
+
+          {!loading && loadError && (
+            <div className="error-inline">
+              <p>Couldn’t load this problem: {loadError}</p>
+              <p className="muted">
+                The local dataset may be incomplete — run{' '}
+                <code>npm run fetch:descriptions</code> to (re)download statements.
+              </p>
+            </div>
+          )}
+
+          {!loading && !loadError && !data?.content && (
             <div className="premium-note">
               <h3>🔒 Premium problem</h3>
-              <p>
-                This problem is part of LeetCode’s paid subscription, so its statement isn’t
-                publicly available — there’s no way to fetch it without an account.
-              </p>
+              <p>This problem is part of LeetCode’s paid subscription and has no public statement.</p>
               <p className="muted">
                 Everything else still works here: take notes, use the editor, and track it as
                 solved.
               </p>
             </div>
-          ) : (
-            <>
-              {loading && <div className="spinner small-spin" aria-label="Loading description" />}
+          )}
 
-              {!loading && loadError && (
-                <div className="error-inline">
-                  <p>Couldn’t load this problem: {loadError}</p>
-                  <p className="muted">
-                    The local dataset may be incomplete — run{' '}
-                    <code>npm run fetch:descriptions</code> to (re)download statements.
-                  </p>
+          {!loading && !loadError && data?.content && (
+            <>
+              <div dangerouslySetInnerHTML={{ __html: sanitize(data.content) }} />
+              {data.hints.length > 0 && (
+                <div className="hints">
+                  {data.hints.map((h, i) => (
+                    <details key={i} className="hint">
+                      <summary>Hint {i + 1}</summary>
+                      <div dangerouslySetInnerHTML={{ __html: sanitize(h) }} />
+                    </details>
+                  ))}
                 </div>
               )}
-
-              {!loading && !loadError && data?.content && (
-                <>
-                  <div dangerouslySetInnerHTML={{ __html: sanitize(data.content) }} />
-                  {data.hints.length > 0 && (
-                    <div className="hints">
-                      {data.hints.map((h, i) => (
-                        <details key={i} className="hint">
-                          <summary>Hint {i + 1}</summary>
-                          <div dangerouslySetInnerHTML={{ __html: sanitize(h) }} />
-                        </details>
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
             </>
+          )}
+        </div>
+
+        <div className="notes">
+          <label className="notes-label" htmlFor="notes-ta">
+            Similar Problems
+          </label>
+          {data?.similar && data.similar.length > 0 ? (
+            <div className="similar-list">
+              {data.similar.map((sp) => (
+                <Link key={sp.s} to={`/problems/${sp.s}`} className="similar-item">
+                  <span className="similar-title">
+                    {sp.p && <LockGlyph />} {sp.t}
+                  </span>
+                  <span className={`pill ${DIFF_CLASS[sp.d]}`}>{sp.d}</span>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="muted">—</p>
           )}
         </div>
 
@@ -207,4 +243,13 @@ export default function ProblemDetailPage() {
 
 function sanitize(html: string): string {
   return DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
+}
+
+function LockGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="11" height="11" className="lock" aria-label="Premium" role="img">
+      <rect x="5" y="10" width="14" height="10" rx="2" fill="currentColor" />
+      <path d="M8 10V7a4 4 0 118 0v3" fill="none" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  );
 }
