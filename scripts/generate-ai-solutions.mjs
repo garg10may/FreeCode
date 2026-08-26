@@ -27,11 +27,11 @@ const OUT_DIR = path.join(ROOT, 'public', 'ai-solutions');
 
 const MODEL = 'stealth/ox-alpha';
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MAX_TOKENS = 12000;
+const MAX_TOKENS = 40000;
 const MAX_TOKENS_RETRY = 20000;
 const MAX_API_RETRIES = 5;
 const MAX_JSON_RETRIES = 3;
-const REQ_TIMEOUT_MS = 300000;
+const REQ_TIMEOUT_MS = 1800000;
 
 const args = process.argv.slice(2);
 function arg(name, def = null) {
@@ -211,17 +211,28 @@ async function generateBatch(KEY, items) {
   const out = new Map();
   let effort = 'medium';
   let messages = buildBatchMessages(items, null);
-  const maxTokens = Math.min(16000, 4800 * items.length + 1500);
+  const maxTokens = Math.min(131072, 4800 * items.length + 1500);
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     let text;
     try {
       text = await callWithRetries(KEY, messages, maxTokens, effort);
     } catch (e) {
-      if (e.code === 'empty_or_truncated' && effort !== 'low') {
-        effort = 'low';
-        log(`  batch of ${items.length}: falling back to reasoning effort=low`);
-        continue;
+      if (e.code === 'empty_or_truncated') {
+        if (items.length > 4) {
+          log(`  batch of ${items.length} exceeded output budget — splitting in half`);
+          const mid = Math.ceil(items.length / 2);
+          const a = await generateBatch(KEY, items.slice(0, mid));
+          const b = await generateBatch(KEY, items.slice(mid));
+          for (const [k, v] of a) out.set(k, v);
+          for (const [k, v] of b) out.set(k, v);
+          return out;
+        }
+        if (effort !== 'low') {
+          effort = 'low';
+          log(`  batch of ${items.length}: falling back to reasoning effort=low`);
+          continue;
+        }
       }
       for (const it of items) out.set(it, { status: 'retry', reason: e.message });
       return out;

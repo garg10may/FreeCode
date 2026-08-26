@@ -67,7 +67,7 @@ for (let i = 0; i < 6; i++) {
   const err = openSync(path.join(ROOT, 'ai-logs', `shard-${i}.err.log`), 'w');
   const child = spawn(
     process.execPath,
-    ['scripts/generate-ai-solutions.mjs', '--shard', `${i}/6`, '--conc', '2', '--batch', '3'],
+    ['scripts/generate-ai-solutions.mjs', '--shard', `${i}/6`, '--conc', '2', '--batch', '16'],
     { detached: true, stdio: ['ignore', out, err], cwd: ROOT }
   );
   child.unref();
