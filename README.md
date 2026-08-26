@@ -7,7 +7,7 @@ A LeetCode-style DSA practice app — the complete numbered problem set, fully o
 - **Full problem set** — all 4,033 problems with the same numbering as LeetCode
 - **Offline statements** — every problem description, hints and metadata pre-fetched into `public/descriptions/` (works with zero network access)
 - **Top Interview 150** — LeetCode's curated interview list as a first-class page with per-topic progress (`#/top-interview-150`)
-- **Interview Crash Course** — the full 13-chapter / 149-item curriculum of *LeetCode's Interview Crash Course: Data Structures and Algorithms*, rebuilt offline (`#/course`); includes every freely readable lesson verbatim, links each exercise to its local problem, and tracks completion
+- **Interview Crash Course** — the full 13-chapter / 149-item curriculum of *LeetCode's Interview Crash Course: Data Structures and Algorithms*, rebuilt offline (`#/course`). Every concept lesson is readable: LeetCode's published articles verbatim (badged *LeetCode*) plus original lessons written for this app (badged *original*) featuring color-coded SVG diagrams, syntax-highlighted code, worked examples and self-quizzes. Every exercise links to its local problem, and completion is tracked
 - **Progress tracking** — solved / favorites / notes persisted in `localStorage`
 - **Filters** — search by title or number, difficulty chips, status, 100+ topic tags, hide premium
 - **Sortable table** — number, title, acceptance rate, difficulty
@@ -68,7 +68,7 @@ The script first verifies your session actually unlocks premium content, then do
 - **Statements**: 4,033/4,033 descriptions fetched, including all 781 premium problems ✅
 - **Official editorials**: every editorial that exists on LeetCode is in `public/solutions/` (2,053 total). The rest genuinely have none server-side (`solution: null` even with a live premium session)
 - **Company tags & frequency**: 985 companies + per-problem mapping, frequency scores in `problems.json` ✅
-- **Interview Crash Course articles**: NOT part of Premium — it's a separate $44.99 add-on (`hasAccess: false`). Only the 4 public preview lessons are fetchable; everything else in `#/course` links to the local problem set instead
+- **Interview Crash Course articles**: NOT part of Premium — it's a separate $44.99 add-on (`hasAccess: false`). The 4 publicly readable articles are fetched verbatim; the remaining lesson texts are authored originally for this app (`scripts/course-content/*.mjs` → `npm run build:course`) with SVG diagrams, highlighted code and quizzes, so the full curriculum works offline
 
 ## Production build
 
@@ -85,13 +85,15 @@ Fully static output — host it anywhere.
 scripts/fetch-problems.mjs      dataset generator (REST list + GraphQL v2 tag enrichment)
 scripts/fetch-descriptions.mjs  bulk statement downloader (concurrent, resumable)
 scripts/fetch-top-interview-150.mjs  Top Interview 150 study plan fetcher
-scripts/fetch-crash-course.mjs  Interview Crash Course curriculum fetcher
+scripts/fetch-crash-course.mjs  Interview Crash Course structure + published articles fetcher
+scripts/course-content/*.mjs    original lesson sources (markdown + SVG diagrams)
+scripts/build-course-content.mjs  compiles lessons -> public/data/course/ + patches index
 public/data/problems.json       full numbered problem set (id, title, slug, difficulty, premium, tags, acceptance, freq)
 public/data/top-interview-150.json  Top Interview 150 groups -> problem slugs
 public/data/crash-course.json   course index: 13 chapters / 149 items with problem links
-public/data/course/             downloadable lesson articles (markdown)
+public/data/course/             lesson articles: {t, c(markdown), src: 'lc'|'orig'}
 public/descriptions/            one JSON per problem: content HTML, hints, metaData, topic tags
 src/pages/                      list page, detail page, Top Interview 150, course
 src/components/                 table, filters, sidebar, editor, pagination
-src/lib/                        store (localStorage), api loader, markdown, stubs, utils
+src/lib/                        store (localStorage), api loader, markdown+highlighter, stubs, utils
 ```

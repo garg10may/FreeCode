@@ -66,8 +66,15 @@ const blockMath = {
     return i === -1 ? undefined : i;
   },
   tokenizer(src: string) {
-    const m = /^\$\$([\s\S]+?)\$\$(?:\n+|$)/.exec(src);
-    if (m) return { type: 'blockMath', raw: m[0], text: m[1].trim() };
+    // Display math only — two strict shapes:
+    //  a) multi-line:  "$$\n … \n$$" (delimiters alone on their lines)
+    //  b) single-line: "$$…$$" with nothing after the closer on that line
+    // A line like "$$n$$, which…" matches neither (the "," blocks (b)), so it
+    // falls through to the paragraph + inline tokenizer instead of lazily
+    // swallowing the rest of the document.
+    const m =
+      /^[ \t]*\$\$[ \t]*\n([\s\S]+?)\n[ \t]*\$\$[ \t]*(?:\n+|$)|^[ \t]*\$\$([^$\n]+?)\$\$[ \t]*(?:\n+|$)/.exec(src);
+    if (m) return { type: 'blockMath', raw: m[0], text: (m[1] ?? m[2]).trim() };
     return undefined;
   },
   renderer(token: { text: string }) {
@@ -87,7 +94,12 @@ const inlineMath = {
     return i === -1 ? undefined : i;
   },
   tokenizer(src: string) {
-    const m = /^\$(\s?[^\s$][^$\n]*?)\$(?!\d)/.exec(src);
+    // LeetCode house style: $$x$$ used inline — may span a single hard-wrap
+    // newline ("$$O(n)\n$$"), so the content allows newlines but no '$'.
+    let m = /^\$\$([^$]+?)\$\$/.exec(src);
+    if (m) return { type: 'inlineMath', raw: m[0], text: m[1].trim() };
+    // Classic single-dollar inline math (kept line-bound to avoid currency pairs).
+    m = /^\$(\s?[^\s$][^$\n]*?)\$(?!\d)/.exec(src);
     if (m) return { type: 'inlineMath', raw: m[0], text: m[1].trim() };
     return undefined;
   },
@@ -118,8 +130,12 @@ function configureMarked() {
 /** LeetCode-flavoured Markdown -> sanitized HTML (fenced code, $math$, [TOC], inline SVG). */
 export function renderMarkdown(markdown: string): string {
   configureMarked();
-  const s = markdown.replace(/^\[TOC\]\s*$/gm, '');
-  const html = marked.parse(s, { async: false, breaks: true }) as string;
+  let s = markdown.replace(/^\[TOC\]\s*$/gm, '');
+  // LeetCode slideshow embeds ("!?!../Documents/542.json:960,540!?!") — dead offline
+  s = s.replace(/!\?![^\n]*?!\?!/g, '');
+  // breaks:false on purpose — LeetCode hard-wraps their markdown source, and
+  // soft wraps must flow as spaces (breaks:true would force mid-sentence <br>s).
+  const html = marked.parse(s, { async: false, breaks: false }) as string;
   return DOMPurify.sanitize(html, {
     ADD_TAGS: ['iframe', 'details', 'summary'],
     ADD_ATTR: [

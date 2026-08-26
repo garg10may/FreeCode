@@ -19,6 +19,12 @@
   --star: #f4c025;
   --code-bg: #141414;
   --hover: #2f2f2f;
+  --tok-k: #ff7b72;
+  --tok-s: #a5d6ff;
+  --tok-n: #79c0ff;
+  --tok-c: #8b949e;
+  --tok-t: #ffa657;
+  --tok-f: #d2a8ff;
 }
 
 :root[data-theme='light'] {
@@ -41,6 +47,12 @@
   --star: #d99a06;
   --code-bg: #f3f3f4;
   --hover: #f0f0f2;
+  --tok-k: #cf222e;
+  --tok-s: #0a3069;
+  --tok-n: #0550ae;
+  --tok-c: #6e7781;
+  --tok-t: #953800;
+  --tok-f: #8250df;
 }
 
 * {
@@ -1511,6 +1523,160 @@ details[open] > .course-chapter::before {
 
 .practice-card p {
   margin: 6px 0 0;
+}
+
+/* ---------- course article rendering ---------- */
+
+.src-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin: -4px 0 14px;
+  color: #b8860b;
+  background: rgba(255, 184, 0, 0.12);
+}
+
+.src-badge.orig {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.svg-wrap {
+  margin: 18px auto;
+  padding: 12px 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: var(--panel-2);
+  overflow-x: auto;
+}
+
+.svg-wrap svg {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  min-width: 520px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.course-article h2 {
+  margin-top: 30px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.course-article h3 {
+  margin-top: 22px;
+}
+
+.course-article blockquote {
+  margin: 14px 0;
+  padding: 10px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 10px 10px 0;
+}
+
+.course-article blockquote p {
+  margin: 4px 0;
+}
+
+.course-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 13px;
+}
+
+.course-article th,
+.course-article td {
+  border: 1px solid var(--border-soft);
+  padding: 7px 11px;
+  text-align: left;
+}
+
+.course-article th {
+  background: var(--panel-2);
+  font-weight: 700;
+}
+
+.course-article tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--panel-2) 55%, transparent);
+}
+
+/* code blocks + syntax tokens */
+
+.desc-body pre,
+.course-article pre,
+pre:has(code.hl) {
+  background: var(--code-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  line-height: 1.55;
+  font-size: 13px;
+  margin: 14px 0;
+}
+
+pre code.hl,
+code.hl {
+  background: none;
+  padding: 0;
+  font-family: ui-monospace, Consolas, 'Cascadia Mono', monospace;
+  white-space: pre;
+}
+
+.tok-k {
+  color: var(--tok-k);
+  font-weight: 600;
+}
+.tok-s {
+  color: var(--tok-s);
+}
+.tok-n {
+  color: var(--tok-n);
+}
+.tok-c {
+  color: var(--tok-c);
+  font-style: italic;
+}
+.tok-t {
+  color: var(--tok-t);
+}
+.tok-f {
+  color: var(--tok-f);
+}
+
+.math-block {
+  overflow-x: auto;
+  text-align: center;
+  margin: 12px 0;
+}
+
+/* quiz / collapsible answers inside lessons */
+
+.course-article details,
+.desc-body details.hint {
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin: 8px 0;
+  background: var(--panel-2);
+}
+
+.course-article details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+
+.course-article details[open] > summary {
+  color: var(--accent);
+  margin-bottom: 6px;
 }
 
 @media (max-width: 1080px) {

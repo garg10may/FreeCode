@@ -11,7 +11,8 @@
     "fetch:descriptions": "node scripts/fetch-descriptions.mjs",
     "fetch:premium": "node scripts/fetch-descriptions.mjs --premium",
     "fetch:top150": "node scripts/fetch-top-interview-150.mjs",
-    "fetch:course": "node scripts/fetch-crash-course.mjs"
+    "fetch:course": "node scripts/fetch-crash-course.mjs",
+    "build:course": "node scripts/build-course-content.mjs"
   },
   "dependencies": {
     "dompurify": "^3.4.14",

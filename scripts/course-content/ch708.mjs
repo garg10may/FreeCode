@@ -97,7 +97,7 @@ Keep one heap holding each list's current head. Pop the global minimum, advance 
 
 ## Example 2 — running median
 
-Two balanced halves: a **max-heap** `lo` (smaller half) and a **min-heap** `hi` (larger half).
+Two balanced halves: a **max-heap** \`lo\` (smaller half) and a **min-heap** \`hi\` (larger half).
 
 - Insert: add to one half, then rebalance sizes (\`len(lo)\` equals \`len(hi)\` or +1)
 - Median: tops of both heaps (average if even)

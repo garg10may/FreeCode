@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { marked } from 'marked';
-import katex from 'katex';
-import DOMPurify from 'dompurify';
+import { renderMarkdown } from '../lib/markdown';
 import type { AiApproach, AiSolutionData } from '../types';
 
 const CODE_LANGS: { id: keyof AiApproach['c']; label: string }[] = [
@@ -127,36 +125,4 @@ function Approach({ ap, idx, total }: { ap: AiApproach; idx: number; total: numb
       )}
     </div>
   );
-}
-
-/** AI editorial markdown: same conventions as official editorials (math, fenced code). */
-function renderMarkdown(md: string): string {
-  let s = md.replace(/^\[TOC\]\s*$/m, '');
-
-  const stash: string[] = [];
-  const park = (html: string) => `\u0000${stash.push(html) - 1}\u0000`;
-
-  s = s.replace(/```[\s\S]*?```/g, (m) => park(m));
-  s = s.replace(/`[^`\n]+`/g, (m) => park(m));
-
-  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => {
-    try {
-      return park(katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false }));
-    } catch {
-      return park(`<code>${tex}</code>`);
-    }
-  });
-  s = s.replace(/\$([^$\n]+?)\$/g, (_, tex) => {
-    try {
-      return park(katex.renderToString(tex.trim(), { displayMode: false, throwOnError: false }));
-    } catch {
-      return park(`<code>${tex}</code>`);
-    }
-  });
-
-  const html = marked.parse(s, { async: false, breaks: true }) as string;
-  const restored = html.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[Number(i)] ?? '');
-  return DOMPurify.sanitize(restored, {
-    ADD_ATTR: ['target', 'class', 'aria-hidden'],
-  });
 }

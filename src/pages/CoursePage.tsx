@@ -31,6 +31,8 @@ interface CourseIndex {
 interface ItemDoc {
   t: string;
   c: string;
+  /** 'lc' = scraped LeetCode article · 'orig' = written for this app */
+  src?: string;
 }
 
 function loadDone(): Record<string, true> {
@@ -217,12 +219,13 @@ export default function CoursePage() {
             </p>
             <div className="course-note">
               <p>
-                <strong>About this rebuild.</strong> The full chapter/item structure below mirrors
+                <strong>About this rebuild.</strong> The full chapter/item structure mirrors
                 LeetCode’s course exactly ({flat.length} items across {index.chapters.length}{' '}
-                chapters). The four publicly readable articles are included verbatim; every exercise
-                is linked to the matching problem in this app, so you can work through the whole
-                curriculum offline. The remaining lesson texts are part of LeetCode’s paid course
-                add-on and are marked accordingly.
+                chapters). Every exercise links to the matching problem in this app, and every
+                concept lesson is included — the handful of LeetCode-published articles verbatim
+                (marked <em>LeetCode</em>), the rest written originally for this app with visual
+                explanations (marked <em>original</em>), so you can work through the entire
+                curriculum fully offline.
               </p>
             </div>
             <ol className="course-chapter-list">
@@ -276,6 +279,12 @@ export default function CoursePage() {
             </div>
 
             <h1 className="course-item-title">{current.it.t}</h1>
+
+            {doc && (
+              <div className={`src-badge${doc.src === 'orig' ? ' orig' : ''}`}>
+                {doc.src === 'orig' ? 'FreeCode original lesson' : 'LeetCode article'}
+              </div>
+            )}
 
             {docError && (
               <div className="premium-note">

@@ -44,6 +44,7 @@ function arg(name, def = null) {
 const ONLY_SLUG = arg('--slug');
 const LIMIT = Number(arg('--limit', 0)) || 0;
 const CONC = Math.max(1, Number(arg('--conc', 4)));
+const BATCH = Math.max(1, Number(arg('--batch', 1)));
 const FORCE = args.includes('--force');
 const DRY = args.includes('--dry');
 const AUDIT = args.includes('--audit');
@@ -147,23 +148,54 @@ async function main() {
   const failures = [];
   const t0 = Date.now();
 
+  const batches = [];
+  for (let i = 0; i < work.length; i += BATCH) batches.push(work.slice(i, i + BATCH));
+  log(`mode: ${BATCH > 1 ? `${BATCH} problems per request` : '1 problem per request'} -> ${batches.length} requests`);
+
   async function lane() {
-    while (done < work.length) {
-      const item = work[done++];
-      const label = `${done}/${work.length}`;
-      try {
-        const res = await generateOne(KEY, item);
-        if (res === 'ok') ok++;
-        else warn++;
-        log(`[${label}] ${item.meta.slug} ${res}`);
-      } catch (e) {
-        fail++;
-        failures.push(`${item.meta.slug}: ${e.message}`);
-        log(`[${label}] ${item.meta.slug} FAIL ${e.message}`);
+    while (done < batches.length) {
+      const batch = batches[done++];
+      const label = `${done}/${batches.length}`;
+
+      const statuses = new Map();
+      if (batch.length === 1) {
+        const item = batch[0];
+        try {
+          const res = await generateOne(KEY, item);
+          statuses.set(item, { status: res === 'ok' ? 'ok' : 'warn' });
+        } catch (e) {
+          statuses.set(item, { status: 'retry', reason: e.message });
+        }
+      } else {
+        for (const [item, st] of await generateBatch(KEY, batch)) statuses.set(item, st);
+      }
+
+      for (const item of batch) {
+        let st = statuses.get(item);
+        if (st.status === 'retry') {
+          try {
+            const res = await generateOne(KEY, item);
+            st = { status: res === 'ok' ? 'ok' : 'warn' };
+          } catch (e) {
+            st = { status: 'fail', reason: e.message };
+          }
+          statuses.set(item, st);
+        }
+        if (st.status === 'ok') {
+          ok++;
+          log(`[${label}] ${item.meta.slug} ok`);
+        } else if (st.status === 'warn') {
+          warn++;
+          log(`[${label}] ${item.meta.slug} warn (${st.reason ?? 'schema issues'})`);
+        } else {
+          fail++;
+          failures.push(`${item.meta.slug}: ${st.reason}`);
+          log(`[${label}] ${item.meta.slug} FAIL ${st.reason}`);
+        }
       }
     }
   }
-  await Promise.all(Array.from({ length: Math.min(CONC, work.length) }, lane));
+  await Promise.all(Array.from({ length: Math.min(CONC, batches.length) }, lane));
 
   const mins = ((Date.now() - t0) / 60000).toFixed(1);
   log(`done in ${mins}m — ok:${ok} warn:${warn} fail:${fail}`);
@@ -171,6 +203,172 @@ async function main() {
     log('failures:');
     for (const f of failures) log('  -', f);
     process.exitCode = 1;
+  }
+}
+
+/** Generates one editorial per item from a SINGLE request. Returns Map<item, {status, reason}>. */
+async function generateBatch(KEY, items) {
+  const out = new Map();
+  let effort = 'medium';
+  let messages = buildBatchMessages(items, null);
+  const maxTokens = Math.min(16000, 4800 * items.length + 1500);
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    let text;
+    try {
+      text = await callWithRetries(KEY, messages, maxTokens, effort);
+    } catch (e) {
+      if (e.code === 'empty_or_truncated' && effort !== 'low') {
+        effort = 'low';
+        log(`  batch of ${items.length}: falling back to reasoning effort=low`);
+        continue;
+      }
+      for (const it of items) out.set(it, { status: 'retry', reason: e.message });
+      return out;
+    }
+
+    let docs;
+    try {
+      docs = extractBatch(text);
+    } catch (e) {
+      if (attempt === 3) {
+        for (const it of items) out.set(it, { status: 'retry', reason: `batch JSON unparseable: ${e.message}` });
+        return out;
+      }
+      messages = buildBatchMessages(items, `invalid JSON (${e.message})`);
+      continue;
+    }
+
+    if (!Array.isArray(docs) || docs.length !== items.length) {
+      if (Array.isArray(docs) && docs.length === items.length + 1 && looksLikeIndexEnvelope(docs)) {
+        docs = docs.slice(1);
+      } else if (attempt < 3) {
+        messages = buildBatchMessages(
+          items,
+          `expected a JSON array with exactly ${items.length} elements in order, got ${Array.isArray(docs) ? docs.length : typeof docs}`
+        );
+        continue;
+      } else {
+        for (const it of items) out.set(it, { status: 'retry', reason: 'array length mismatch' });
+        return out;
+      }
+    }
+
+    const missing = [];
+    const saves = [];
+    items.forEach((it, i) => {
+      const doc = docs[i];
+      const errs = doc ? validate(doc) : ['missing element'];
+      if (errs.length === 0) {
+        out.set(it, { status: 'ok' });
+        saves.push(save(it.meta.slug, doc));
+      } else if (errs.length === 1 && errs[0].startsWith('missing element')) {
+        missing.push(i);
+      } else {
+        out.set(it, { status: 'retry', reason: `schema: ${errs.join('; ')}` });
+      }
+    });
+    await Promise.all(saves);
+
+    if (missing.length === 0) return out;
+    if (attempt === 3) {
+      for (const i of missing) out.set(items[i], { status: 'retry', reason: 'missing from batch response' });
+      return out;
+    }
+    messages = buildBatchMessages(items, `editorials for PROBLEM indices ${missing.join(', ')} were missing or invalid — regenerate the full array including them`);
+  }
+  for (const it of items) if (!out.has(it)) out.set(it, { status: 'retry', reason: 'batch exhausted' });
+  return out;
+}
+
+/** Some models prepend a note element like ["Here are the editorials:", {...}]. */
+function looksLikeIndexEnvelope(arr) {
+  return arr.length > 0 && typeof arr[0] === 'string';
+}
+
+function buildBatchMessages(items, feedback) {
+  const blocks = items.map((item, i) => {
+    const { meta, desc } = item;
+    const statement = htmlToText(desc.c);
+    const tags = (desc.g ?? []).map((t) => t.name).join(', ');
+    return [
+      `### PROBLEM ${i}: #${desc.q || meta.id} ${desc.t || meta.title} (${desc.d || meta.difficulty})`,
+      tags ? `Topic tags: ${tags}` : '',
+      '',
+      statement,
+    ]
+      .filter(Boolean)
+      .join('\n');
+  });
+
+  const schemaExample = `{
+  "t": "editorial title (string)",
+  "o": "markdown: 'Understanding the problem' — restate the problem in plain words, walk through the provided examples step by step, and explain what the constraints imply about the needed approach",
+  "k": ["2-4 key insights, each a short standalone takeaway (1-2 sentences)"],
+  "a": [
+    {
+      "n": "Approach 1: <name>",
+      "i": "markdown: the intuition — the core idea and why it works for this problem",
+      "s": ["algorithm step 1", "step 2"],
+      "c": {
+        "python": "complete Python 3 solution in LeetCode 'class Solution' style",
+        "cpp": "complete C++ solution in LeetCode 'class Solution' style",
+        "java": "complete Java solution in LeetCode 'class Solution' style",
+        "javascript": "complete JavaScript solution in LeetCode 'var x = function(...)' style"
+      },
+      "t": "time complexity with brief justification, e.g. 'O(n log n) — sorting dominates'",
+      "sp": "space complexity with brief justification"
+    }
+  ],
+  "w": "markdown: wrap-up — which approach to pick in an interview and when, common pitfalls and edge cases, likely follow-up questions"
+}`;
+
+  const user = [
+    `You will write editorials for ${items.length} DIFFERENT LeetCode problems, listed below.`,
+    '',
+    ...blocks,
+    '',
+    `Respond with STRICT JSON only — no markdown fences, no text before or after. The response must be a single JSON ARRAY with exactly ${items.length} elements IN ORDER: element i is the editorial object for PROBLEM i, matching this schema:`,
+    '',
+    schemaExample,
+    '',
+    'Requirements:',
+    '- 2-3 approaches per problem, ordered from most intuitive to optimal. If no meaningfully distinct second approach exists, 1 approach is acceptable.',
+    '- EVERY approach must include all four languages: python, cpp, java, javascript, in LeetCode submission format, complete and correct.',
+    '- Be CONCISE: intuition and overview 3-5 sentences each, at most 4 steps, no code comments unless essential. Budget roughly 900 words per problem so the whole array fits.',
+    '- Inside JSON strings escape newlines as \\n and double quotes as \\\" — never emit raw newlines inside a JSON string.',
+    '- Do not repeat the full problem statements in the output.',
+    feedback ? `\nIMPORTANT: Your previous response could not be used (${feedback}). Return the corrected, complete JSON array now.` : '',
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  return [
+    {
+      role: 'system',
+      content:
+        'You are an expert competitive-programming tutor and editorial writer. You always respond with a single valid JSON value and nothing else.',
+    },
+    { role: 'user', content: user },
+  ];
+}
+
+function extractBatch(text) {
+  let s = text.trim();
+  s = s.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '');
+  const start = s.indexOf('[');
+  const end = s.lastIndexOf(']');
+  if (start === -1 || end === -1 || end <= start) {
+    const obj = extractJson(text);
+    if (Array.isArray(obj.results)) return obj.results;
+    if (Array.isArray(obj.editorials)) return obj.editorials;
+    throw new Error('no JSON array found');
+  }
+  s = s.slice(start, end + 1);
+  try {
+    return JSON.parse(s);
+  } catch {
+    return JSON.parse(repairControlChars(s));
   }
 }
 
